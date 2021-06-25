@@ -34,13 +34,11 @@
         },
         mounted() {
             this.socket = socket = io("http://localhost:4040")
-            // 進入聊天室時，會收到之前的全部訊息，並更新到 messages
-            this.socket.on("allMessage", obj => {
+                this.socket.on("allMessage", obj => {
                 console.log('received all messages')
                 console.log(obj)
                 this.messages = obj
             })
-            // 設定接收到新訊息的監聽器
             this.socket.on("newMessage", obj => {
                 console.log('received new message')
                 this.messages.push(obj)
